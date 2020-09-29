@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>tugas pertemuan 15</title>
+    <style>
+      .button {
+        transition-duration: 0.4s;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+
+      .button:hover {
+        background-color: #dd324a; /* Green */
+        color: white;
+      }
+    </style>
+
+    <script>
+      document.getElementById("pesan").addEventListener("click", bookingHotel);
+
+      function bookingHotel() {}
+    </script>
+  </head>
+  <body>
+    <div>
+      <h3>Silahkan Booking Kamar Hotel</h3>
+      <form action="">
+        <table>
+          <tr>
+            <td>Nama Anda</td>
+            <td>:</td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>Kode Booking</td>
+            <td>:</td>
+            <td>
+              <input type="text" />
+            </td>
+            <td>pilih salah satu (BG123, AL212, CR112)</td>
+          </tr>
+          <tr>
+            <td>Lama Menginap</td>
+            <td>:</td>
+            <td><input type="number" /></td>
+          </tr>
+          <tr>
+            <td>Jumlah Orang</td>
+            <td>:</td>
+            <td><input type="number" /></td>
+          </tr>
+        </table>
+        <br />
+        <button class="button" id="pesan">PROSES PESANAN</button>
+      </form>
+    </div>
+  </body>
+</html>
