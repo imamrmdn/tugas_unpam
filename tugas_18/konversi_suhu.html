@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>tugas pertemuan 18</title>
+    <script>
+      function derajat() {
+        var fahrenheit = parseInt(document.getElementById("fahrenheit").value);
+
+        if (isNaN(fahrenheit)) {
+          alert("Masukan Dengan Derajat Fahrenheit Dengan Angka");
+        } else {
+          var celcius = (fahrenheit - 32) / 1.8;
+          var reamur = celcius * 0.8;
+          var kelvin = celcius + 273.15;
+        }
+
+        var derajatFahrenheit = (document.getElementById(
+          "derajatFahrenheit"
+        ).innerHTML = fahrenheit + " &#xb0 F");
+
+        var derajatCelcius = (document.getElementById(
+          "derajatCelcius"
+        ).innerHTML =
+          celcius + " &#xb0 C  atau " + Math.round(celcius) + " &#xb0 C");
+
+        var derajatReamur = (document.getElementById(
+          "derajatReamur"
+        ).innerHTML =
+          reamur + " &#xb0 R atau " + Math.round(reamur) + " &#xb0 R");
+
+        var derajatKelvin = (document.getElementById(
+          "derajatKelvin"
+        ).innerHTML =
+          kelvin + " &#xb0 K atau " + Math.round(kelvin) + " &#xb0 K");
+      }
+    </script>
+  </head>
+  <body>
+    <h3>Konversi Suhu dari Fahrenheit ke Celcius, Reamur dan Kelvin</h3>
+    <div>
+      <table>
+        <tr>
+          <td>Derajat Fahrenheit:</td>
+          <td>
+            <input type="number" id="fahrenheit" />
+          </td>
+          <td>
+            <input type="submit" value="hitung" onclick="derajat()" />
+          </td>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <br />
+      <table>
+        <tr>
+          <td>Derajat Fahrenheit:</td>
+          <td>
+            <span id="derajatFahrenheit"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Derajat Celcius:</td>
+          <td>
+            <span id="derajatCelcius"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Derajat Reamur:</td>
+          <td>
+            <span id="derajatReamur"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Derajat Kelvin:</td>
+          <td>
+            <span id="derajatKelvin"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

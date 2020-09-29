@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>tugas_pertemuan_16</title>
+
+    <script language="JavaScript" type="text/javascript">
+      function kalkulator() {
+        //variable nilai satu
+        var angkaSatu = parseInt(document.getElementById("angkaSatu").value);
+
+        //variable nilai dua
+        var angkaDua = parseInt(document.getElementById("angkaDua").value);
+
+        //variable operasi aritmatik
+        var op = document.getElementById("op").value;
+
+        //variable untuk total nilai satu dan nilai dua
+        var total;
+
+        if (isNaN(angkaSatu) || isNaN(angkaDua)) {
+          alert("isi form dengan angka!");
+        } else {
+          if (op == "+") {
+            total = angkaSatu + angkaDua;
+          } else if (op == "-") {
+            total = angkaSatu - angkaDua;
+          } else if (op == "*") {
+            total = angkaSatu * angkaDua;
+          } else if (op == "%") {
+            total = angkaSatu % angkaDua;
+          } else {
+            total = angkaSatu ^ angkaDua;
+          }
+        }
+        var hasil = (document.getElementById(
+          "hasil"
+        ).innerHTML = hasil = total);
+
+        hasil.value = total;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <table>
+        <tr>
+          <td>Nilai I</td>
+          <td></td>
+          <td>Nilai II</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number" id="angkaSatu" />
+          </td>
+          <td>
+            <select id="op">
+              <option value="+">+</option>
+              <option value="-">-</option>
+              <option value="*">x</option>
+              <option value="^">^</option>
+              <option value="%">%</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" id="angkaDua" />
+          </td>
+          <td>
+            <input type="submit" onclick="kalkulator()" value="submit" />
+          </td>
+          <td>
+            <p>= <span id="hasil"></span></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
