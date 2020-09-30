@@ -1,57 +1,163 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>tugas pertemuan 15</title>
-    <style>
-      .button {
-        transition-duration: 0.4s;
-        border-radius: 6px;
-        font-size: 16px;
-      }
-
-      .button:hover {
-        background-color: #dd324a; /* Green */
-        color: white;
-      }
-    </style>
-
-    <script>
-      document.getElementById("pesan").addEventListener("click", bookingHotel);
-
-      function bookingHotel() {}
-    </script>
   </head>
+
   <body>
-    <div>
-      <h3>Silahkan Booking Kamar Hotel</h3>
-      <form action="">
-        <table>
-          <tr>
-            <td>Nama Anda</td>
-            <td>:</td>
-            <td><input type="text" /></td>
-          </tr>
-          <tr>
-            <td>Kode Booking</td>
-            <td>:</td>
-            <td>
-              <input type="text" />
-            </td>
-            <td>pilih salah satu (BG123, AL212, CR112)</td>
-          </tr>
-          <tr>
-            <td>Lama Menginap</td>
-            <td>:</td>
-            <td><input type="number" /></td>
-          </tr>
-          <tr>
-            <td>Jumlah Orang</td>
-            <td>:</td>
-            <td><input type="number" /></td>
-          </tr>
-        </table>
-        <br />
-        <button class="button" id="pesan">PROSES PESANAN</button>
-      </form>
-    </div>
+    <h3>Silahkan Booking Kamar Hotel</h3>
+    <form onsubmit="return false">
+      <table>
+        <tr>
+          <td>
+            <label>Nama Anda</label>
+          </td>
+          <td>:</td>
+          <td>
+            <input type="text" id="namaAnda" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Pilih Kode Booking</label>
+          </td>
+          <td>:</td>
+          <td>
+            <select id="kd">
+              <option value="BG123">BG123</option>
+              <option value="AL212">AL212</option>
+              <option value="CR112">CR112</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label>Lama Menginap</label></td>
+          <td>:</td>
+          <td><input type="number" id="lama_inap" /></td>
+        </tr>
+        <tr>
+          <td><label>Jumlah Orang</label></td>
+          <td>:</td>
+          <td><input type="number" id="jmlh_org" /></td>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <br />
+      <button id="tombol_form">PROSES PESANAN</button>
+    </form>
+
+    <br />
+    <br />
+
+    <h2><span id="nama"></span></h2>
+    <h2><span id="kd_booking"></span></h2>
+    <h2><span id="nama_kamar"></span></h2>
+    <h2><span id="nomer_kamar"></span></h2>
+    <h2><span id="pembayaran"></span></h2>
+    <h2><span id="hrg_kamar"></span></h2>
+    <h2><span id="diskon"></span></h2>
+    <h2><span id="harga_bersih"></span></h2>
   </body>
+
+  <script>
+    document
+      .getElementById("tombol_form")
+      .addEventListener("click", tampilkan_nilai_form);
+
+    function tampilkan_nilai_form() {
+      var namaLengkap = document.getElementById("namaAnda").value;
+      var kode_booking = document.getElementById("kd").value;
+      var lama_inap = document.getElementById("lama_inap").value;
+      var jumlah_orang = document.getElementById("jmlh_org").value;
+
+      var kode_kamar;
+      var nama_kamar;
+      var no_kamar;
+      var harga_perkamar;
+      var total_harga;
+      var pembayaran_kamar;
+      var jumlah_diskon;
+      var diskon;
+      var harga_bersih;
+
+      //cek
+      if (kode_booking == "BG123") {
+        kode_kamar = kode_booking.substring(0, 2);
+        no_kamar = kode_booking.substring(2);
+        if (kode_kamar == "BG") {
+          nama_kamar = "Bougenvile";
+          harga_perkamar = 425000;
+        }
+      } else if (kode_booking == "AL212") {
+        kode_kamar = kode_booking.substring(0, 2);
+        no_kamar = kode_booking.substring(2);
+        if (kode_kamar == "AL") {
+          nama_kamar = "Alamanda";
+          harga_perkamar = 375000;
+        }
+      } else if (kode_booking == "CR112") {
+        kode_kamar = kode_booking.substring(0, 2);
+        no_kamar = kode_booking.substring(2);
+        if (kode_kamar == "CR") {
+          nama_kamar = "Crysan";
+          harga_perkamar = 300000;
+        }
+      }
+
+      total_harga = harga_perkamar * lama_inap;
+
+      var harga_bayar;
+      var charge;
+      if (jumlah_orang > 2) {
+        for (var i = 1; i <= jumlah_orang; i++) {
+          charge = +75000;
+        }
+        harga_bayar = charge + total_harga;
+      } else {
+        harga_bayar = total_harga;
+      }
+
+      if (harga_bayar >= 1500000) {
+        jumlah_diskon = "3%";
+        diskon = (harga_bayar * 3) / 100;
+        harga_bersih = harga_bayar - diskon;
+      } else if (harga_bayar >= 750000) {
+        jumlah_diskon = "1.5%";
+        diskon = (harga_bayar * 1.5) / 100;
+        harga_bersih = harga_bayar - diskon;
+      } else {
+        jumlah_diskon = "0%";
+        harga_bersih = harga_bayar;
+      }
+
+      if (jumlah_orang > 2) {
+        alert("Jumlah yang menginap lebih dari 2 orang");
+      }
+
+      ///
+      //menampilkan nama pembooking
+      document.getElementById("nama").innerHTML = "Nama : " + namaLengkap;
+
+      //menampilkan kode booking
+      document.getElementById("kd_booking").innerHTML =
+        "Kode Booking : " + kode_booking;
+
+      //menampilkan nama kamar
+      document.getElementById("nama_kamar").innerHTML =
+        "Nama Kamar : " + nama_kamar;
+
+      document.getElementById("hrg_kamar").innerHTML =
+        "total harga : " + harga_bayar;
+
+      document.getElementById("nomer_kamar").innerHTML =
+        "Nomer Kamar Anda : " + no_kamar;
+
+      document.getElementById("diskon").innerHTML =
+        "Anda Mendapat Diskon Sebesar : " + jumlah_diskon;
+
+      document.getElementById("harga_bersih").innerHTML =
+        "Harga Bersih Yang harus dibayar : " + harga_bersih;
+    }
+  </script>
 </html>
